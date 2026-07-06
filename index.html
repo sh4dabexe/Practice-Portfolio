@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voice — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <title>Shadab Alam — Portfolio</title>
+  <meta name="description" content="Shadab Alam — Frontend Developer, Responsive Website Designer, Web Application Developer & Git/GitHub User. Explore my projects and get in touch." />
+  <meta name="author" content="Shadab Alam" />
+  <meta property="og:title" content="Shadab Alam — Portfolio" />
+  <meta property="og:description" content="Frontend Developer & Web Application Developer based in India." />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7c3aed;
-      --purple-light: #a78bfa;
-      --purple-glow: rgba(124, 58, 237, 0.4);
-      --pink: #ec4899;
-      --bg: #05010f;
-      --glass: rgba(255,255,255,0.04);
-      --glass-border: rgba(255,255,255,0.08);
-      --text: #e2e8f0;
-      --muted: rgba(226,232,240,0.45);
+      --bg:           #011C40;
+      --bg2:          #023859;
+      --card:         #0a2d55;
+      --card-hover:   #0d3566;
+      --btn:          #54ACBF;
+      --btn-dark:     #3d8fa0;
+      --highlight:    #A7EBF2;
+      --accent:       #26658C;
+      --glass:        rgba(2, 56, 89, 0.35);
+      --glass-border: rgba(167, 235, 242, 0.12);
+      --glass-hover:  rgba(167, 235, 242, 0.22);
+      --text:         #ffffff;
+      --muted:        rgba(200, 230, 240, 0.60);
+      --glow:         rgba(84, 172, 191, 0.35);
+      --glow-strong:  rgba(84, 172, 191, 0.6);
     }
 
     html { scroll-behavior: smooth; }
@@ -30,74 +40,108 @@
       cursor: none;
     }
 
-    /* CURSOR */
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--btn); }
+
+    /* ── CURSOR ── */
     .cursor {
-      position: fixed; width: 12px; height: 12px;
-      background: var(--purple-light); border-radius: 50%;
+      position: fixed; width: 10px; height: 10px;
+      background: var(--highlight); border-radius: 50%;
       pointer-events: none; z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+      transition: width 0.25s, height 0.25s, background 0.25s;
       mix-blend-mode: screen;
     }
     .cursor-ring {
-      position: fixed; width: 36px; height: 36px;
-      border: 1px solid rgba(167,139,250,0.5); border-radius: 50%;
+      position: fixed; width: 34px; height: 34px;
+      border: 1.5px solid rgba(167, 235, 242, 0.55); border-radius: 50%;
       pointer-events: none; z-index: 9998;
       transform: translate(-50%, -50%);
-      transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+      transition: width 0.3s ease-out, height 0.3s ease-out;
     }
 
-    /* ANIMATED BG */
+    /* ── ANIMATED BG ── */
     .bg-layer {
       position: fixed; inset: 0; z-index: 0; overflow: hidden;
     }
     .orb {
-      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35;
-      animation: float 12s ease-in-out infinite;
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: 0.28;
+      animation: float 14s ease-in-out infinite;
     }
-    .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -150px; animation-delay: 0s; }
-    .orb2 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: -100px; right: -100px; animation-delay: -4s; }
-    .orb3 { width: 300px; height: 300px; background: radial-gradient(circle, #4f46e5, transparent); top: 40%; left: 60%; animation-delay: -7s; }
+    .orb1 { width: 650px; height: 650px; background: radial-gradient(circle, #26658C, transparent); top: -220px; left: -160px; animation-delay: 0s; }
+    .orb2 { width: 420px; height: 420px; background: radial-gradient(circle, #54ACBF, transparent); bottom: -120px; right: -100px; animation-delay: -5s; }
+    .orb3 { width: 340px; height: 340px; background: radial-gradient(circle, #023859, transparent); top: 38%; left: 58%; animation-delay: -9s; }
+    .orb4 { width: 250px; height: 250px; background: radial-gradient(circle, #A7EBF2, transparent); top: 60%; left: 20%; animation-delay: -3s; opacity: 0.14; }
 
     @keyframes float {
       0%, 100% { transform: translate(0,0) scale(1); }
-      33% { transform: translate(30px, -40px) scale(1.05); }
-      66% { transform: translate(-20px, 20px) scale(0.95); }
+      33%       { transform: translate(28px, -38px) scale(1.06); }
+      66%       { transform: translate(-18px, 22px) scale(0.94); }
     }
 
     /* NOISE OVERLAY */
     body::after {
       content: ''; position: fixed; inset: 0; z-index: 1;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; opacity: 0.35;
     }
 
-    /* LAYOUT */
+    /* ── LAYOUT ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.2rem 2rem;
-      background: rgba(5,1,15,0.6);
-      backdrop-filter: blur(20px);
+      padding: 1.1rem 2rem;
+      background: rgba(1, 28, 64, 0.72);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       border-bottom: 1px solid var(--glass-border);
       display: flex; justify-content: space-between; align-items: center;
+      transition: padding 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      padding: 0.8rem 2rem;
+      background: rgba(1, 28, 64, 0.92);
     }
     .nav-logo {
-      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem;
-      background: linear-gradient(135deg, var(--purple-light), var(--pink));
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem;
+      background: linear-gradient(135deg, var(--highlight), var(--btn));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.02em; text-decoration: none;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.9rem;
-      letter-spacing: 0.05em; transition: color 0.3s;
+      color: var(--muted); text-decoration: none; font-size: 0.88rem;
+      letter-spacing: 0.05em; transition: color 0.3s; position: relative;
     }
-    .nav-links a:hover { color: var(--purple-light); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--btn); transform: scaleX(0);
+      transition: transform 0.3s; transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--highlight); }
+    .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* HERO */
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--highlight); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── HERO ── */
     #hero {
       min-height: 100vh; display: flex; align-items: center;
       padding-top: 5rem;
@@ -108,48 +152,89 @@
     }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--purple-light);
-      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
-      padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+      font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--highlight);
+      background: rgba(167, 235, 242, 0.08); border: 1px solid rgba(167, 235, 242, 0.2);
+      padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.4rem;
     }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--purple-light); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .hero-tag .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--btn);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.4; transform:scale(0.8);} }
 
     .hero-name {
-      font-family: 'Syne', sans-serif; font-size: clamp(3.5rem, 7vw, 6rem);
-      font-weight: 800; line-height: 0.95; letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #fff 0%, var(--purple-light) 50%, var(--pink) 100%);
+      font-family: 'Syne', sans-serif; font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+      font-weight: 800; line-height: 0.96; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 0%, var(--highlight) 55%, var(--btn) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
-    .hero-sub {
-      font-size: 1.05rem; color: var(--muted); line-height: 1.7;
-      max-width: 420px; margin-bottom: 2.5rem;
-    }
-    .hero-sub em { font-style: italic; color: var(--purple-light); }
 
-    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-role-wrap {
+      font-size: 1.1rem; color: var(--muted); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.5rem; min-height: 1.8rem;
+    }
+    .hero-role-prefix { color: var(--muted); }
+    .hero-role-typed {
+      color: var(--highlight); font-weight: 500;
+      border-right: 2px solid var(--btn);
+      animation: blink 0.85s step-end infinite;
+      white-space: nowrap; overflow: hidden;
+    }
+    @keyframes blink { 0%,100%{border-color:var(--btn);} 50%{border-color:transparent;} }
+
+    .hero-sub {
+      font-size: 0.97rem; color: var(--muted); line-height: 1.75;
+      max-width: 400px; margin-bottom: 2.2rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn {
-      padding: 0.75rem 1.8rem; border-radius: 100px; font-size: 0.9rem;
-      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      padding: 0.72rem 1.7rem; border-radius: 100px; font-size: 0.88rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
       cursor: none; text-decoration: none; transition: all 0.3s;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 0.4rem;
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--purple), #4f46e5);
+      background: linear-gradient(135deg, var(--btn), var(--accent));
       color: #fff; border: none;
-      box-shadow: 0 0 30px rgba(124,58,237,0.4);
+      box-shadow: 0 0 28px var(--glow);
     }
-    .btn-primary:hover { box-shadow: 0 0 50px rgba(124,58,237,0.7); transform: translateY(-2px); }
+    .btn-primary:hover {
+      box-shadow: 0 0 48px var(--glow-strong);
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--highlight), var(--btn));
+      color: var(--bg);
+    }
     .btn-ghost {
       background: var(--glass); color: var(--text);
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(10px);
     }
-    .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); transform: translateY(-2px); }
+    .btn-ghost:hover {
+      border-color: var(--highlight); color: var(--highlight);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(167, 235, 242, 0.15);
+    }
 
-    /* PFP */
+    /* Hero Social Icons */
+    .hero-socials { display: flex; gap: 0.9rem; }
+    .hero-social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      color: var(--muted); text-decoration: none;
+      transition: all 0.3s; backdrop-filter: blur(10px);
+    }
+    .hero-social-link:hover {
+      border-color: var(--highlight); color: var(--highlight);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--glow);
+    }
+    .hero-social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ── PFP ── */
     .hero-pfp-wrap {
       display: flex; justify-content: center; align-items: center;
       position: relative;
@@ -159,8 +244,8 @@
     }
     .pfp-ring::before {
       content: ''; position: absolute; inset: -3px; border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--purple), var(--pink), var(--purple));
-      animation: spin 6s linear infinite; z-index: 0;
+      background: conic-gradient(from 0deg, var(--btn), var(--highlight), var(--accent), var(--btn));
+      animation: spin 7s linear infinite; z-index: 0;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     .pfp-ring::after {
@@ -168,19 +253,19 @@
       background: var(--bg); z-index: 1;
     }
     .pfp-img {
-      position: absolute; inset: 8px; border-radius: 50%;
+      position: absolute; inset: 9px; border-radius: 50%;
       object-fit: cover; z-index: 2;
-      width: calc(100% - 16px); height: calc(100% - 16px);
+      width: calc(100% - 18px); height: calc(100% - 18px);
     }
     .pfp-glow {
-      position: absolute; width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(124,58,237,0.3), transparent 70%);
+      position: absolute; width: 370px; height: 370px;
+      background: radial-gradient(circle, rgba(84, 172, 191, 0.28), transparent 70%);
       border-radius: 50%; z-index: -1;
-      animation: glowPulse 3s ease-in-out infinite;
+      animation: glowPulse 3.5s ease-in-out infinite;
     }
-    @keyframes glowPulse { 0%,100%{opacity:0.5;transform:scale(1);} 50%{opacity:1;transform:scale(1.1);} }
+    @keyframes glowPulse { 0%,100%{opacity:0.55;transform:scale(1);} 50%{opacity:1;transform:scale(1.1);} }
 
-    /* GLASS CARD */
+    /* ── GLASS CARD ── */
     .glass-card {
       background: var(--glass);
       border: 1px solid var(--glass-border);
@@ -188,19 +273,19 @@
       -webkit-backdrop-filter: blur(20px);
       border-radius: 20px;
       padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
     }
     .glass-card:hover {
-      border-color: rgba(124,58,237,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(124,58,237,0.15);
+      border-color: rgba(167, 235, 242, 0.28);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(84, 172, 191, 0.13);
     }
 
-    /* SECTIONS */
+    /* ── SECTIONS ── */
     section { padding: 6rem 0; }
     .section-label {
-      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--purple-light); margin-bottom: 0.75rem;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--btn); margin-bottom: 0.75rem;
     }
     .section-title {
       font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
@@ -208,117 +293,245 @@
       margin-bottom: 3rem;
     }
     .section-title span {
-      background: linear-gradient(135deg, var(--purple-light), var(--pink));
+      background: linear-gradient(135deg, var(--highlight), var(--btn));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    /* ABOUT */
+    /* ── ABOUT ── */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .about-text { font-size: 1rem; color: var(--muted); line-height: 1.85; }
-    .about-text strong { color: var(--text); font-weight: 400; }
-    .about-stat {
-      text-align: center; padding: 1.5rem;
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .roles-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
     }
+    .role-card {
+      display: flex; align-items: center; gap: 0.85rem;
+      padding: 1.1rem 1.3rem; border-radius: 14px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      transition: all 0.35s;
+    }
+    .role-card:hover {
+      border-color: rgba(167, 235, 242, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(84, 172, 191, 0.12);
+    }
+    .role-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--btn));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .role-name {
+      font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700;
+      color: var(--text); line-height: 1.3;
+    }
+
+    .about-stat { text-align: center; padding: 1.5rem; }
     .stat-num {
-      font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--purple-light), var(--pink));
+      font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--highlight), var(--btn));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
 
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .skill-card { position: relative; overflow: hidden; }
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
     .skill-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      opacity: 0; transition: opacity 0.3s;
+      background: linear-gradient(90deg, var(--btn), var(--highlight));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
     }
-    .skill-card:hover::before { opacity: 1; }
-    .skill-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--btn));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(84, 172, 191, 0.25);
+      transition: transform 0.3s;
+    }
+    .skill-card:hover .skill-icon-wrap { transform: scale(1.1) rotate(-4deg); }
     .skill-name {
-      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--text);
     }
-    .skill-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-    .skill-bar-wrap { margin-top: 1rem; background: rgba(255,255,255,0.05); border-radius: 100px; height: 3px; }
-    .skill-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--purple), var(--pink)); }
+    .skill-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .skill-bar-wrap {
+      height: 4px; border-radius: 100px;
+      background: rgba(167, 235, 242, 0.08);
+      overflow: hidden;
+    }
+    .skill-bar {
+      height: 100%; border-radius: 100px; width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--btn), var(--highlight));
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    }
 
-    /* PROJECTS */
+    /* ── PROJECTS ── */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .project-card { position: relative; overflow: hidden; }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--btn), var(--highlight));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
     .project-badge {
-      display: inline-block; font-size: 0.7rem; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px;
-      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.25);
-      color: var(--purple-light); margin-bottom: 1rem;
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.25rem 0.8rem; border-radius: 100px;
+      background: rgba(84, 172, 191, 0.12); border: 1px solid rgba(84, 172, 191, 0.3);
+      color: var(--btn); margin-bottom: 1rem;
     }
     .project-title {
-      font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700;
-      margin-bottom: 0.75rem;
+      font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 0.75rem; color: var(--text);
     }
-    .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .project-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.72; margin-bottom: 1.5rem; }
     .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .tag {
-      font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 100px;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+      font-size: 0.7rem; padding: 0.2rem 0.65rem; border-radius: 100px;
+      background: rgba(167, 235, 242, 0.06); border: 1px solid var(--glass-border);
       color: var(--muted);
     }
+    .project-links { display: flex; gap: 1rem; align-items: center; margin-top: 1.3rem; flex-wrap: wrap; }
     .project-link {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      color: var(--purple-light); text-decoration: none; font-size: 0.85rem;
-      margin-top: 1.2rem; transition: gap 0.3s;
+      color: var(--highlight); text-decoration: none; font-size: 0.83rem;
+      font-weight: 500; transition: all 0.3s;
     }
-    .project-link:hover { gap: 0.7rem; }
+    .project-link:hover { gap: 0.7rem; color: var(--btn); }
+    .project-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
 
-    /* CONTACT */
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .contact-text { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+    /* ── CONTACT ── */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-text { font-size: 0.98rem; color: var(--muted); line-height: 1.85; }
     .social-links { display: flex; flex-direction: column; gap: 1rem; }
     .social-link {
       display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 1.5rem; border-radius: 14px;
+      padding: 1rem 1.4rem; border-radius: 16px;
       background: var(--glass); border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px); text-decoration: none; color: var(--text);
-      transition: all 0.3s; font-size: 0.9rem;
+      backdrop-filter: blur(12px); text-decoration: none; color: var(--text);
+      transition: all 0.35s; font-size: 0.9rem;
     }
     .social-link:hover {
-      border-color: var(--purple-light); color: var(--purple-light);
-      transform: translateX(6px);
-      box-shadow: 0 0 20px rgba(124,58,237,0.2);
+      border-color: var(--highlight); color: var(--highlight);
+      transform: translateX(8px);
+      box-shadow: 0 0 28px rgba(167, 235, 242, 0.12);
     }
-    .social-icon { font-size: 1.2rem; width: 24px; text-align: center; }
-    .social-name { font-weight: 400; }
-    .social-handle { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+    .social-icon-wrap {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--btn));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.3s;
+    }
+    .social-link:hover .social-icon-wrap { transform: scale(1.1); }
+    .social-icon-wrap svg { width: 20px; height: 20px; fill: white; }
+    .social-info { flex: 1; }
+    .social-name { font-weight: 500; font-size: 0.92rem; }
+    .social-handle { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+    .social-arrow {
+      color: var(--muted); transition: transform 0.3s, color 0.3s;
+      font-size: 1.1rem;
+    }
+    .social-link:hover .social-arrow { transform: translateX(4px); color: var(--highlight); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      padding: 2rem; text-align: center;
+      padding: 2.5rem 2rem; text-align: center;
       border-top: 1px solid var(--glass-border);
       color: var(--muted); font-size: 0.82rem;
       position: relative; z-index: 2;
     }
-    footer span { color: var(--purple-light); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-social {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      color: var(--muted); text-decoration: none;
+      transition: all 0.3s;
+    }
+    .footer-social:hover {
+      border-color: var(--btn); color: var(--highlight);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--glow);
+    }
+    .footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+    footer span { color: var(--highlight); }
+    .footer-heart { color: #ff6b6b; }
 
-    /* DIVIDER */
+    /* ── DIVIDER ── */
     .divider {
-      height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
-      margin: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+      margin: 0; position: relative; z-index: 2;
     }
 
-    /* SCROLL ANIMATIONS */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-zoom {
+      opacity: 0; transform: scale(0.95);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-zoom.visible { opacity: 1; transform: scale(1); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-30px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(30px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .hero-grid, .about-grid, .contact-wrap { grid-template-columns: 1fr; }
       .hero-pfp-wrap { order: -1; }
       .pfp-ring { width: 220px; height: 220px; }
       .pfp-glow { width: 260px; height: 260px; }
-      nav { padding: 1rem; }
-      .nav-links { gap: 1.2rem; }
+      nav { padding: 1rem 1.2rem; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(1, 28, 64, 0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        padding: 1rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block; padding: 0.85rem 1.8rem;
+        font-size: 1rem; border-bottom: 1px solid rgba(167,235,242,0.05);
+      }
+      .hamburger { display: flex; }
+      .roles-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .hero-name { font-size: clamp(2.6rem, 11vw, 4rem); }
+      .contact-wrap { gap: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .btn-group { flex-direction: column; }
+      .btn { text-align: center; justify-content: center; }
+      .hero-socials { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -333,12 +546,17 @@
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
+    <div class="orb orb4"></div>
   </div>
 
   <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Voice</div>
-    <ul class="nav-links">
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Shadab Alam</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -351,21 +569,44 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="hero-tag">Available for Collabs</div>
-          <h1 class="hero-name">Voice</h1>
+          <div class="hero-tag"><span class="dot"></span>Available for Work</div>
+          <h1 class="hero-name">Shadab Alam</h1>
+          <div class="hero-role-wrap">
+            <span class="hero-role-prefix">I'm a&nbsp;</span>
+            <span class="hero-role-typed" id="typedRole"></span>
+          </div>
           <p class="hero-sub">
-            <em>I don't specialize — I explore.</em><br/>
-            Tech enthusiast. Builder of random things. Breaker of systems (on purpose). Curious by nature, restless by design.
+            Passionate about building clean, responsive web experiences that look great and work seamlessly across all devices. Let's create something amazing together.
           </p>
           <div class="btn-group">
-            <a href="#projects" class="btn btn-primary">See My Work</a>
-            <a href="#contact" class="btn btn-ghost">Let's Connect</a>
+            <a href="#projects" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              See My Work
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              Let's Connect
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://instagram.com/sh4dab.exe" target="_blank" class="hero-social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://github.com/sh4dabexe" target="_blank" class="hero-social-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://t.me/sh4dabexe" target="_blank" class="hero-social-link" aria-label="Telegram">
+              <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sh4dabexe/" target="_blank" class="hero-social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
           </div>
         </div>
-        <div class="hero-pfp-wrap">
+        <div class="hero-pfp-wrap reveal-zoom">
           <div class="pfp-glow"></div>
           <div class="pfp-ring">
-            <img src="pfp.jpg" alt="Voice" class="pfp-img" />
+            <img src="pfp.jpg" alt="Shadab Alam" class="pfp-img" />
           </div>
         </div>
       </div>
@@ -378,37 +619,56 @@
   <section id="about">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">Who am I</p>
-        <h2 class="section-title">Just a guy who <span>tries everything</span></h2>
+        <p class="section-label">Who I Am</p>
+        <h2 class="section-title">About <span>Shadab Alam</span></h2>
       </div>
-      <div class="about-grid reveal">
-        <div class="glass-card">
-          <p class="about-text">
-            Hey, I'm <strong>Voice</strong> — a self-taught tech explorer who never stuck to one lane.<br/><br/>
-            I've edited videos, written Python scripts, built tiny software tools, installed operating systems just for fun, ran dual boots, and tried pretty much everything the internet has to offer.<br/><br/>
-            I'm not an expert at one thing. I'm <strong>decent at many things</strong> — and curious about all of them. That's kind of my superpower.
-          </p>
-        </div>
-        <div>
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <p class="about-text">
+              Hey, I'm <strong>Shadab Alam</strong> — a passionate developer focused on building clean, modern, and fully responsive web experiences.<br/><br/>
+              I love turning ideas into interactive, well-designed web applications that are both functional and visually compelling. I believe great code and great design go hand in hand.
+            </p>
+          </div>
           <div class="stats-row">
-            <div class="glass-card about-stat">
+            <div class="glass-card about-stat reveal">
               <div class="stat-num">5+</div>
               <div class="stat-label">Projects Built</div>
             </div>
-            <div class="glass-card about-stat">
-              <div class="stat-num">3+</div>
-              <div class="stat-label">OS Installed</div>
+            <div class="glass-card about-stat reveal">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Responsive</div>
             </div>
-            <div class="glass-card about-stat">
+            <div class="glass-card about-stat reveal">
               <div class="stat-num">∞</div>
-              <div class="stat-label">Things Tried</div>
+              <div class="stat-label">Learning Mode</div>
             </div>
           </div>
-          <div class="glass-card" style="margin-top:1rem;">
-            <p class="about-text" style="font-size:0.9rem;">
-              Currently: <strong>Student & Tech Explorer</strong><br/>
-              Based in India 🇮🇳<br/>
-              Interests: Coding, Editing, OS tinkering, and learning whatever looks cool.
+        </div>
+        <div class="reveal-right">
+          <p class="section-label" style="margin-bottom: 1.2rem;">What Defines Me</p>
+          <div class="roles-grid">
+            <div class="role-card">
+              <div class="role-icon">⚡</div>
+              <div class="role-name">Fast Learner</div>
+            </div>
+            <div class="role-card">
+              <div class="role-icon">🤝</div>
+              <div class="role-name">Team Collaboration</div>
+            </div>
+            <div class="role-card">
+              <div class="role-icon">🔧</div>
+              <div class="role-name">Git &amp; GitHub User</div>
+            </div>
+            <div class="role-card">
+              <div class="role-icon">🤖</div>
+              <div class="role-name">AI-Augmented Dev</div>
+            </div>
+          </div>
+          <div class="glass-card" style="margin-top: 1.2rem;">
+            <p class="about-text" style="font-size: 0.9rem;">
+              Based in <strong>India 🇮🇳</strong><br/>
+              Open to freelance projects & collaborations.
             </p>
           </div>
         </div>
@@ -422,46 +682,43 @@
   <section id="skills">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">What I know</p>
-        <h2 class="section-title">Skills & <span>Capabilities</span></h2>
+        <p class="section-label">What I Know</p>
+        <h2 class="section-title">Skills &amp; <span>Capabilities</span></h2>
       </div>
-      <div class="skills-grid reveal">
-        <div class="glass-card skill-card">
-          <div class="skill-icon">🎬</div>
-          <div class="skill-name">Video Editing</div>
-          <div class="skill-desc">Decent level editing — cuts, effects, color grading. Not Hollywood, but gets the job done nicely.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+      <div class="skills-grid">
+
+        <!-- Web Development -->
+        <div class="glass-card skill-card reveal">
+          <div class="skill-icon-wrap">🌐</div>
+          <div class="skill-name">Web Development</div>
+          <p class="skill-desc">Building modern, responsive websites from scratch using HTML, CSS, and JavaScript with clean and maintainable code.</p>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="80%"></div></div>
         </div>
-        <div class="glass-card skill-card">
-          <div class="skill-icon">🐍</div>
+
+        <!-- Python -->
+        <div class="glass-card skill-card reveal">
+          <div class="skill-icon-wrap">🐍</div>
           <div class="skill-name">Python</div>
-          <div class="skill-desc">Built functional tools and scripts — downloaders, automation, small apps. Learning as I go.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:50%"></div></div>
+          <p class="skill-desc">Writing functional Python scripts and tools — automation, web scraping, CLI tools, and small applications.</p>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="60%"></div></div>
         </div>
-        <div class="glass-card skill-card">
-          <div class="skill-icon">💻</div>
-          <div class="skill-name">OS & Systems</div>
-          <div class="skill-desc">Installed Windows, Linux distros, configured dual boots. Comfortable in terminal.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+
+        <!-- Front-end Development -->
+        <div class="glass-card skill-card reveal">
+          <div class="skill-icon-wrap">🎨</div>
+          <div class="skill-name">Front-end Development</div>
+          <p class="skill-desc">Crafting pixel-perfect, interactive UIs with smooth animations, glassmorphism, and fully responsive layouts.</p>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="78%"></div></div>
         </div>
-        <div class="glass-card skill-card">
-          <div class="skill-icon">🔧</div>
-          <div class="skill-name">Building Tools</div>
-          <div class="skill-desc">Love making small utilities that solve real problems — if I need it, I build it.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+
+        <!-- Video Editing -->
+        <div class="glass-card skill-card reveal">
+          <div class="skill-icon-wrap">🎬</div>
+          <div class="skill-name">Video Editing</div>
+          <p class="skill-desc">Editing videos with clean cuts, effects, and color grading — from short clips to polished final productions.</p>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="65%"></div></div>
         </div>
-        <div class="glass-card skill-card">
-          <div class="skill-icon">🎮</div>
-          <div class="skill-name">Game Dev (Beginner)</div>
-          <div class="skill-desc">Built a Flappy Bird clone just to see if I could. I could.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:35%"></div></div>
-        </div>
-        <div class="glass-card skill-card">
-          <div class="skill-icon">🔍</div>
-          <div class="skill-name">Research & Learning</div>
-          <div class="skill-desc">Good at academics and deep-diving into new topics fast. Self-taught most things.</div>
-          <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -472,11 +729,59 @@
   <section id="projects">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">What I built</p>
+        <p class="section-label">What I Built</p>
         <h2 class="section-title">Projects & <span>Experiments</span></h2>
       </div>
-      <div class="projects-grid reveal">
-        <div class="glass-card project-card">
+      <div class="projects-grid">
+
+        <!-- Birthday Present Website -->
+        <div class="glass-card project-card reveal">
+          <span class="project-badge">Web App</span>
+          <div class="project-title">Birthday Present Website</div>
+          <p class="project-desc">A beautifully designed birthday surprise website featuring smooth animations, interactive elements, and a personalized user experience.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Animations</span>
+          </div>
+          <div class="project-links">
+            <a href="https://sh4dabexe.github.io/BirthdayPresent/" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com/sh4dabexe/BirthdayPresent" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Ludo Online -->
+        <div class="glass-card project-card reveal">
+          <span class="project-badge">Game</span>
+          <div class="project-title">Ludo Online</div>
+          <p class="project-desc">An online Ludo game with a clean interface and smooth gameplay experience — bringing the classic board game to the browser.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Game Dev</span>
+          </div>
+          <div class="project-links">
+            <a href="https://sh4dabexe.github.io/LudoOnline/" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com/sh4dabexe/LudoOnline" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- YouTube Downloader -->
+        <div class="glass-card project-card reveal">
           <span class="project-badge">Python Tool</span>
           <div class="project-title">YouTube Video Downloader</div>
           <p class="project-desc">A Python-based tool to download YouTube videos directly. Simple, fast, and actually works.</p>
@@ -485,20 +790,34 @@
             <span class="tag">yt-dlp</span>
             <span class="tag">CLI</span>
           </div>
-          <a href="https://github.com/voice786" target="_blank" class="project-link">View on GitHub →</a>
+          <div class="project-links">
+            <a href="https://github.com/sh4dabexe" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              View on GitHub
+            </a>
+          </div>
         </div>
-        <div class="glass-card project-card">
+
+        <!-- Pinterest Downloader -->
+        <div class="glass-card project-card reveal">
           <span class="project-badge">Python Tool</span>
           <div class="project-title">Pinterest Downloader</div>
-          <p class="project-desc">Download Pinterest posts in bulk. Useful for grabbing reference images and inspiration boards.</p>
+          <p class="project-desc">Download Pinterest posts in bulk. Useful for grabbing reference images and inspiration boards quickly.</p>
           <div class="project-tags">
             <span class="tag">Python</span>
             <span class="tag">Web Scraping</span>
             <span class="tag">Automation</span>
           </div>
-          <a href="https://github.com/voice786" target="_blank" class="project-link">View on GitHub →</a>
+          <div class="project-links">
+            <a href="https://github.com/sh4dabexe" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              View on GitHub
+            </a>
+          </div>
         </div>
-        <div class="glass-card project-card">
+
+        <!-- Flappy Bird Clone -->
+        <div class="glass-card project-card reveal">
           <span class="project-badge">Game</span>
           <div class="project-title">Flappy Bird Clone</div>
           <p class="project-desc">Recreated the classic Flappy Bird game from scratch. Because why not? Turns out — pretty fun to build.</p>
@@ -507,8 +826,14 @@
             <span class="tag">Pygame</span>
             <span class="tag">Game Dev</span>
           </div>
-          <a href="https://github.com/voice786" target="_blank" class="project-link">View on GitHub →</a>
+          <div class="project-links">
+            <a href="https://github.com/sh4dabexe" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              View on GitHub
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -519,72 +844,197 @@
   <section id="contact">
     <div class="container">
       <div class="reveal">
-        <p class="section-label">Let's talk</p>
-        <h2 class="section-title">Find me <span>Online</span></h2>
+        <p class="section-label">Let's Talk</p>
+        <h2 class="section-title">Find Me <span>Online</span></h2>
       </div>
-      <div class="contact-wrap reveal">
-        <div class="glass-card">
+      <div class="contact-wrap">
+        <div class="glass-card reveal-left">
           <p class="contact-text">
-            I'm always up for interesting conversations — tech, projects, collabs, or just vibing.<br/><br/>
-            Hit me up on any of these platforms. I'm most active on Instagram and Telegram.
+            I'm always open to interesting conversations — whether it's about a project, a collaboration, or just a good chat about web development.<br/><br/>
+            Hit me up on any of these platforms. I'm most active on <strong style="color: var(--highlight);">Instagram</strong> and <strong style="color: var(--highlight);">Telegram</strong>.
           </p>
         </div>
-        <div class="social-links">
-          <a href="https://www.instagram.com/oreki.fxx/" target="_blank" class="social-link">
-            <span class="social-icon">📸</span>
-            <span class="social-name">Instagram</span>
-            <span class="social-handle">@oreki.fxx</span>
+        <div class="social-links reveal-right">
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/sh4dab.exe" target="_blank" class="social-link">
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="social-info">
+              <div class="social-name">Instagram</div>
+              <div class="social-handle">@sh4dab.exe</div>
+            </div>
+            <span class="social-arrow">→</span>
           </a>
-          <a href="https://t.me/legitVoice" target="_blank" class="social-link">
-            <span class="social-icon">✈️</span>
-            <span class="social-name">Telegram</span>
-            <span class="social-handle">@legitVoice</span>
+
+          <!-- Telegram -->
+          <a href="https://t.me/sh4dabexe" target="_blank" class="social-link">
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </div>
+            <div class="social-info">
+              <div class="social-name">Telegram</div>
+              <div class="social-handle">@sh4dabexe</div>
+            </div>
+            <span class="social-arrow">→</span>
           </a>
-          <a href="https://github.com/voice786" target="_blank" class="social-link">
-            <span class="social-icon">🐙</span>
-            <span class="social-name">GitHub</span>
-            <span class="social-handle">voice786</span>
+
+          <!-- GitHub -->
+          <a href="https://github.com/sh4dabexe" target="_blank" class="social-link">
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div class="social-info">
+              <div class="social-name">GitHub</div>
+              <div class="social-handle">sh4dabexe</div>
+            </div>
+            <span class="social-arrow">→</span>
           </a>
-          <a href="https://www.linkedin.com/in/shadab-alam-b22476311/" target="_blank" class="social-link">
-            <span class="social-icon">💼</span>
-            <span class="social-name">LinkedIn</span>
-            <span class="social-handle">Shadab Alam</span>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/sh4dabexe/" target="_blank" class="social-link">
+            <div class="social-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="social-info">
+              <div class="social-name">LinkedIn</div>
+              <div class="social-handle">Shadab Alam</div>
+            </div>
+            <span class="social-arrow">→</span>
           </a>
+
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Crafted with 🖤 by <span>Voice</span> — I don't specialize, I explore.</p>
+    <div class="footer-inner">
+      <div class="footer-socials">
+        <a href="https://instagram.com/sh4dab.exe" target="_blank" class="footer-social" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://github.com/sh4dabexe" target="_blank" class="footer-social" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://t.me/sh4dabexe" target="_blank" class="footer-social" aria-label="Telegram">
+          <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sh4dabexe/" target="_blank" class="footer-social" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+      <p>Made with <span class="footer-heart">❤️</span> by <span>Shadab Alam</span></p>
+    </div>
   </footer>
 
   <script>
-    // CURSOR
+    /* ── CURSOR ── */
     const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
+    const ring   = document.getElementById('cursorRing');
     let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+    });
     (function animRing() {
-      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-      ring.style.left = rx+'px'; ring.style.top = ry+'px';
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
       requestAnimationFrame(animRing);
     })();
     document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; ring.style.width='50px'; ring.style.height='50px'; });
-      el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='36px'; ring.style.height='36px'; });
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width  = '18px';
+        cursor.style.height = '18px';
+        ring.style.width    = '48px';
+        ring.style.height   = '48px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width  = '10px';
+        cursor.style.height = '10px';
+        ring.style.width    = '34px';
+        ring.style.height   = '34px';
+      });
     });
 
-    // SCROLL REVEAL
-    const reveals = document.querySelectorAll('.reveal');
+    /* ── TYPING ANIMATION ── */
+    const roles = [
+      'Frontend Developer',
+      'Responsive Website Designer',
+      'Web Application Developer',
+      'Git & GitHub User'
+    ];
+    const typedEl = document.getElementById('typedRole');
+    let roleIdx = 0, charIdx = 0, deleting = false;
+    const TYPING_SPEED  = 80;
+    const DELETING_SPEED = 45;
+    const PAUSE_END     = 1800;
+    const PAUSE_START   = 400;
+
+    function typeLoop() {
+      const current = roles[roleIdx];
+      if (!deleting) {
+        typedEl.textContent = current.slice(0, ++charIdx);
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, PAUSE_END);
+          return;
+        }
+        setTimeout(typeLoop, TYPING_SPEED);
+      } else {
+        typedEl.textContent = current.slice(0, --charIdx);
+        if (charIdx === 0) {
+          deleting = false;
+          roleIdx  = (roleIdx + 1) % roles.length;
+          setTimeout(typeLoop, PAUSE_START);
+          return;
+        }
+        setTimeout(typeLoop, DELETING_SPEED);
+      }
+    }
+    typeLoop();
+
+    /* ── NAV SCROLL SHRINK ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── HAMBURGER MENU ── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    /* ── SCROLL REVEAL ── */
+    const allReveal = document.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
     const obs = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 100);
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 90);
+          // Animate skill bars inside this card
+          entry.target.querySelectorAll('.skill-bar[data-width]').forEach(bar => {
+            setTimeout(() => { bar.style.width = bar.dataset.width; }, i * 90 + 200);
+          });
+          obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
-    reveals.forEach(r => obs.observe(r));
+    allReveal.forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
